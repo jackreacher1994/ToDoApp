@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ToDoApp</string>
+    <string name="etNewItem">New Task</string>
+    <string name="task_name">Name:</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="notes">Notes:</string>
+
+    <string name="menu_edit">Edit</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_filter">Filter</string>
+    <string name="menu_done">Done</string>
+    <string name="menu_cancel">Cancel</string>
+    <string name="all_filter">All</string>
+    <string name="check_filter">Done</string>
+    <string name="uncheck_filter">Undone</string>
+    <string name="search_task">Search task...</string>
+
+    <string name="taskNameOk">""</string>
+    <string name="taskNameNotOk">Please complete all fields!</string>
+
+    <string name="empty_string">""</string>
+
+    <string name="btnDate_add">Select Date</string>
+    <string name="btnTime_add">Select Time</string>
+</resources>
