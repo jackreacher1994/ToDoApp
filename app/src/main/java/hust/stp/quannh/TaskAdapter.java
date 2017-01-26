@@ -2,6 +2,7 @@ package hust.stp.quannh;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
     @Override
     public View getView(final int position, View row, ViewGroup parent) {
-        TaskHolder holder = null;
+        final TaskHolder holder;
 
         if(row == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
@@ -64,12 +65,27 @@ public class TaskAdapter extends ArrayAdapter<Task> {
                 mData.get(position).setIsChecked(isChecked);
                 //mDbHelper.updateAllTaskStatus(mData);
                 mDbHelper.updateTaskStatus(mData.get(position));
+                if(isChecked){
+                    holder.tvName.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    holder.tvNotes.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    holder.tvDate.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                } else {
+                    holder.tvName.setPaintFlags(holder.tvName.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                    holder.tvNotes.setPaintFlags(holder.tvNotes.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                    holder.tvDate.setPaintFlags(holder.tvDate.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                }
             }
         });
 
         holder.cbStatus.setChecked(task.getIsChecked());
 
         holder.tvDate.setText(task.getDate()+" "+task.getTime());
+
+        if(task.getIsChecked()){
+            holder.tvName.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvNotes.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvDate.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        }
 
         return row;
     }
